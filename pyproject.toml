@@ -1,0 +1,33 @@
+[project]
+name = "fault-atlas"
+version = "0.1.0"
+description = "Failure taxonomy classifier with human-in-the-loop label correction and aggregate failure analysis for AI-generated responses"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "numpy>=2.4.6",
+    "pydantic>=2.13.5",
+    "pyyaml>=6.0.3",
+    "rich>=15.0.0",
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+aft = "ai_failure_taxonomy.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.uv.build-backend]
+module-name = "ai_failure_taxonomy"

@@ -1,0 +1,1263 @@
+{
+  "heuristic": {
+    "n_items": 57,
+    "macro": {
+      "precision": 1.0,
+      "recall": 0.7875,
+      "f1": 0.8596
+    },
+    "micro": {
+      "precision": 1.0,
+      "recall": 0.8049,
+      "f1": 0.8919
+    },
+    "exact_match": 0.8772,
+    "hamming_loss": 0.0175,
+    "sample_jaccard": 0.8772,
+    "none_accuracy": 0.8772,
+    "per_category": {
+      "hallucination": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 2,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1": 0.75,
+        "support": 5
+      },
+      "factual_error": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 3,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714,
+        "support": 5
+      },
+      "omission": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 4
+      },
+      "reasoning_error": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 2,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.6667,
+        "support": 4
+      },
+      "formatting_failure": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      },
+      "over_refusal": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "tn": 51,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 6
+      },
+      "instruction_violation": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "tn": 50,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      },
+      "unsupported_claim": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889,
+        "support": 5
+      }
+    },
+    "confusion": {
+      "hallucination": {
+        "hallucination": 3,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 1,
+        "none": 2
+      },
+      "factual_error": {
+        "hallucination": 0,
+        "factual_error": 2,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 3
+      },
+      "omission": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 4,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "reasoning_error": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 2,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 2
+      },
+      "formatting_failure": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 5,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "over_refusal": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 6,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "instruction_violation": {
+        "hallucination": 0,
+        "factual_error": 1,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 1,
+        "over_refusal": 0,
+        "instruction_violation": 7,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "unsupported_claim": {
+        "hallucination": 1,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 4,
+        "none": 1
+      },
+      "none": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 20
+      }
+    },
+    "errors": [
+      {
+        "id": "r018",
+        "gold": [
+          "hallucination",
+          "unsupported_claim"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "hallucination",
+          "unsupported_claim"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r036",
+        "gold": [
+          "reasoning_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "reasoning_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r040",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r059",
+        "gold": [
+          "reasoning_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "reasoning_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r067",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r071",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r072",
+        "gold": [
+          "hallucination"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "hallucination"
+        ],
+        "spurious": []
+      }
+    ]
+  },
+  "llm": {
+    "n_items": 57,
+    "macro": {
+      "precision": 0.8869,
+      "recall": 0.756,
+      "f1": 0.7895
+    },
+    "micro": {
+      "precision": 0.8378,
+      "recall": 0.7561,
+      "f1": 0.7949
+    },
+    "exact_match": 0.7368,
+    "hamming_loss": 0.0351,
+    "sample_jaccard": 0.7807,
+    "none_accuracy": 0.8421,
+    "per_category": {
+      "hallucination": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 2,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1": 0.75,
+        "support": 5
+      },
+      "factual_error": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 3,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714,
+        "support": 5
+      },
+      "omission": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571,
+        "support": 4
+      },
+      "reasoning_error": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571,
+        "support": 4
+      },
+      "formatting_failure": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 0,
+        "tn": 50,
+        "precision": 0.7143,
+        "recall": 1.0,
+        "f1": 0.8333,
+        "support": 5
+      },
+      "over_refusal": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 1,
+        "tn": 49,
+        "precision": 0.7143,
+        "recall": 0.8333,
+        "f1": 0.7692,
+        "support": 6
+      },
+      "instruction_violation": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 2,
+        "tn": 49,
+        "precision": 0.8333,
+        "recall": 0.7143,
+        "f1": 0.7692,
+        "support": 7
+      },
+      "unsupported_claim": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 0,
+        "tn": 51,
+        "precision": 0.8333,
+        "recall": 1.0,
+        "f1": 0.9091,
+        "support": 5
+      }
+    },
+    "confusion": {
+      "hallucination": {
+        "hallucination": 3,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 2,
+        "none": 2
+      },
+      "factual_error": {
+        "hallucination": 0,
+        "factual_error": 2,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 2
+      },
+      "omission": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 3,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 1,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "reasoning_error": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 3,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 1
+      },
+      "formatting_failure": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 5,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "over_refusal": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 1,
+        "over_refusal": 5,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 1
+      },
+      "instruction_violation": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 2,
+        "over_refusal": 0,
+        "instruction_violation": 5,
+        "unsupported_claim": 0,
+        "none": 1
+      },
+      "unsupported_claim": {
+        "hallucination": 2,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 5,
+        "none": 0
+      },
+      "none": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 1,
+        "instruction_violation": 0,
+        "unsupported_claim": 1,
+        "none": 18
+      }
+    },
+    "errors": [
+      {
+        "id": "r002",
+        "gold": [
+          "none"
+        ],
+        "predicted": [
+          "unsupported_claim"
+        ],
+        "missed": [],
+        "spurious": [
+          "unsupported_claim"
+        ]
+      },
+      {
+        "id": "r004",
+        "gold": [
+          "over_refusal"
+        ],
+        "predicted": [
+          "formatting_failure",
+          "over_refusal"
+        ],
+        "missed": [],
+        "spurious": [
+          "formatting_failure"
+        ]
+      },
+      {
+        "id": "r010",
+        "gold": [
+          "formatting_failure"
+        ],
+        "predicted": [
+          "formatting_failure",
+          "instruction_violation"
+        ],
+        "missed": [],
+        "spurious": [
+          "instruction_violation"
+        ]
+      },
+      {
+        "id": "r015",
+        "gold": [
+          "factual_error",
+          "instruction_violation"
+        ],
+        "predicted": [
+          "instruction_violation"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r024",
+        "gold": [
+          "hallucination"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "hallucination"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r036",
+        "gold": [
+          "reasoning_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "reasoning_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r038",
+        "gold": [
+          "instruction_violation"
+        ],
+        "predicted": [
+          "formatting_failure",
+          "instruction_violation"
+        ],
+        "missed": [],
+        "spurious": [
+          "formatting_failure"
+        ]
+      },
+      {
+        "id": "r040",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r041",
+        "gold": [
+          "over_refusal"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "over_refusal"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r054",
+        "gold": [
+          "formatting_failure",
+          "instruction_violation"
+        ],
+        "predicted": [
+          "formatting_failure"
+        ],
+        "missed": [
+          "instruction_violation"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r071",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r072",
+        "gold": [
+          "hallucination"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "hallucination"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r074",
+        "gold": [
+          "instruction_violation"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "instruction_violation"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r081",
+        "gold": [
+          "omission"
+        ],
+        "predicted": [
+          "over_refusal"
+        ],
+        "missed": [
+          "omission"
+        ],
+        "spurious": [
+          "over_refusal"
+        ]
+      },
+      {
+        "id": "r087",
+        "gold": [
+          "none"
+        ],
+        "predicted": [
+          "over_refusal"
+        ],
+        "missed": [],
+        "spurious": [
+          "over_refusal"
+        ]
+      }
+    ]
+  },
+  "ensemble": {
+    "n_items": 57,
+    "macro": {
+      "precision": 0.9479,
+      "recall": 0.8688,
+      "f1": 0.8855
+    },
+    "micro": {
+      "precision": 0.9231,
+      "recall": 0.878,
+      "f1": 0.9
+    },
+    "exact_match": 0.8596,
+    "hamming_loss": 0.0175,
+    "sample_jaccard": 0.8772,
+    "none_accuracy": 0.8947,
+    "per_category": {
+      "hallucination": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889,
+        "support": 5
+      },
+      "factual_error": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 3,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714,
+        "support": 5
+      },
+      "omission": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 4
+      },
+      "reasoning_error": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571,
+        "support": 4
+      },
+      "formatting_failure": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      },
+      "over_refusal": {
+        "tp": 6,
+        "fp": 2,
+        "fn": 0,
+        "tn": 49,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571,
+        "support": 6
+      },
+      "instruction_violation": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "tn": 50,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      },
+      "unsupported_claim": {
+        "tp": 5,
+        "fp": 1,
+        "fn": 0,
+        "tn": 51,
+        "precision": 0.8333,
+        "recall": 1.0,
+        "f1": 0.9091,
+        "support": 5
+      }
+    },
+    "confusion": {
+      "hallucination": {
+        "hallucination": 4,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 2,
+        "none": 1
+      },
+      "factual_error": {
+        "hallucination": 0,
+        "factual_error": 2,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 2
+      },
+      "omission": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 4,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 1,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "reasoning_error": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 3,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 1
+      },
+      "formatting_failure": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 5,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "over_refusal": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 6,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "instruction_violation": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 1,
+        "over_refusal": 0,
+        "instruction_violation": 7,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "unsupported_claim": {
+        "hallucination": 2,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 5,
+        "none": 0
+      },
+      "none": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 1,
+        "instruction_violation": 0,
+        "unsupported_claim": 1,
+        "none": 18
+      }
+    },
+    "errors": [
+      {
+        "id": "r002",
+        "gold": [
+          "none"
+        ],
+        "predicted": [
+          "unsupported_claim"
+        ],
+        "missed": [],
+        "spurious": [
+          "unsupported_claim"
+        ]
+      },
+      {
+        "id": "r015",
+        "gold": [
+          "factual_error",
+          "instruction_violation"
+        ],
+        "predicted": [
+          "instruction_violation"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r036",
+        "gold": [
+          "reasoning_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "reasoning_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r040",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r071",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r072",
+        "gold": [
+          "hallucination"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "hallucination"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r081",
+        "gold": [
+          "omission"
+        ],
+        "predicted": [
+          "omission",
+          "over_refusal"
+        ],
+        "missed": [],
+        "spurious": [
+          "over_refusal"
+        ]
+      },
+      {
+        "id": "r087",
+        "gold": [
+          "none"
+        ],
+        "predicted": [
+          "over_refusal"
+        ],
+        "missed": [],
+        "spurious": [
+          "over_refusal"
+        ]
+      }
+    ]
+  },
+  "ensemble+review": {
+    "n_items": 57,
+    "macro": {
+      "precision": 1.0,
+      "recall": 0.8938,
+      "f1": 0.937
+    },
+    "micro": {
+      "precision": 1.0,
+      "recall": 0.9024,
+      "f1": 0.9487
+    },
+    "exact_match": 0.9298,
+    "hamming_loss": 0.0088,
+    "sample_jaccard": 0.9298,
+    "none_accuracy": 0.9298,
+    "per_category": {
+      "hallucination": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889,
+        "support": 5
+      },
+      "factual_error": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 2,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1": 0.75,
+        "support": 5
+      },
+      "omission": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 4
+      },
+      "reasoning_error": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "tn": 53,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571,
+        "support": 4
+      },
+      "formatting_failure": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      },
+      "over_refusal": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "tn": 51,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 6
+      },
+      "instruction_violation": {
+        "tp": 7,
+        "fp": 0,
+        "fn": 0,
+        "tn": 50,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      },
+      "unsupported_claim": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 52,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      }
+    },
+    "confusion": {
+      "hallucination": {
+        "hallucination": 4,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 2,
+        "none": 1
+      },
+      "factual_error": {
+        "hallucination": 0,
+        "factual_error": 3,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 2
+      },
+      "omission": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 4,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "reasoning_error": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 3,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 1
+      },
+      "formatting_failure": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 5,
+        "over_refusal": 0,
+        "instruction_violation": 1,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "over_refusal": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 6,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "instruction_violation": {
+        "hallucination": 0,
+        "factual_error": 1,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 1,
+        "over_refusal": 0,
+        "instruction_violation": 7,
+        "unsupported_claim": 0,
+        "none": 0
+      },
+      "unsupported_claim": {
+        "hallucination": 2,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 5,
+        "none": 0
+      },
+      "none": {
+        "hallucination": 0,
+        "factual_error": 0,
+        "omission": 0,
+        "reasoning_error": 0,
+        "formatting_failure": 0,
+        "over_refusal": 0,
+        "instruction_violation": 0,
+        "unsupported_claim": 0,
+        "none": 20
+      }
+    },
+    "errors": [
+      {
+        "id": "r036",
+        "gold": [
+          "reasoning_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "reasoning_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r040",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r071",
+        "gold": [
+          "factual_error"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "factual_error"
+        ],
+        "spurious": []
+      },
+      {
+        "id": "r072",
+        "gold": [
+          "hallucination"
+        ],
+        "predicted": [
+          "none"
+        ],
+        "missed": [
+          "hallucination"
+        ],
+        "spurious": []
+      }
+    ]
+  }
+}

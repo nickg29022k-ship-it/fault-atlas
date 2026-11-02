@@ -1,0 +1,15 @@
+{"rank": 1, "id": "r043", "priority": 1.5, "reasons": ["low confidence (0.00)", "classifiers disagree (heuristic=['none'], llm=['unsupported_claim'])"], "labels": ["unsupported_claim"]}
+{"rank": 2, "id": "r087", "priority": 1.462, "reasons": ["low confidence (0.04)", "classifiers disagree (heuristic=['none'], llm=['over_refusal'])"], "labels": ["over_refusal"]}
+{"rank": 3, "id": "r061", "priority": 1.444, "reasons": ["low confidence (0.06)", "classifiers disagree (heuristic=['unsupported_claim'], llm=['none'])"], "labels": ["unsupported_claim"]}
+{"rank": 4, "id": "r018", "priority": 1.437, "reasons": ["low confidence (0.06)", "classifiers disagree (heuristic=['none'], llm=['hallucination', 'unsupported_claim'])"], "labels": ["hallucination", "unsupported_claim"]}
+{"rank": 5, "id": "r024", "priority": 1.402, "reasons": ["low confidence (0.10)", "classifiers disagree (heuristic=['hallucination'], llm=['none'])"], "labels": ["hallucination"]}
+{"rank": 6, "id": "r011", "priority": 1.364, "reasons": ["low confidence (0.14)", "classifiers disagree (heuristic=['none'], llm=['over_refusal'])"], "labels": ["over_refusal"]}
+{"rank": 7, "id": "r002", "priority": 1.34, "reasons": ["low confidence (0.16)", "classifiers disagree (heuristic=['none'], llm=['unsupported_claim'])"], "labels": ["unsupported_claim"]}
+{"rank": 8, "id": "r044", "priority": 1.318, "reasons": ["low confidence (0.18)", "classifiers disagree (heuristic=['none'], llm=['hallucination'])"], "labels": ["hallucination"]}
+{"rank": 9, "id": "r081", "priority": 1.266, "reasons": ["low confidence (0.23)", "classifiers disagree (heuristic=['omission'], llm=['over_refusal'])"], "labels": ["omission", "over_refusal"]}
+{"rank": 10, "id": "r031", "priority": 1.26, "reasons": ["low confidence (0.24)", "classifiers disagree (heuristic=['none'], llm=['hallucination', 'unsupported_claim'])"], "labels": ["hallucination", "unsupported_claim"]}
+{"rank": 11, "id": "r059", "priority": 1.244, "reasons": ["low confidence (0.26)", "classifiers disagree (heuristic=['none'], llm=['reasoning_error'])"], "labels": ["reasoning_error"]}
+{"rank": 12, "id": "r015", "priority": 1.21, "reasons": ["low confidence (0.04)", "classifiers disagree (heuristic=['factual_error', 'instruction_violation'], llm=['instruction_violation'])"], "labels": ["instruction_violation"]}
+{"rank": 13, "id": "r033", "priority": 1.202, "reasons": ["low confidence (0.05)", "classifiers disagree (heuristic=['formatting_failure'], llm=['omission', 'formatting_failure'])"], "labels": ["omission", "formatting_failure"]}
+{"rank": 14, "id": "r074", "priority": 1.135, "reasons": ["low confidence (0.36)", "classifiers disagree (heuristic=['instruction_violation'], llm=['none'])"], "labels": ["instruction_violation"]}
+{"rank": 15, "id": "r041", "priority": 1.122, "reasons": ["low confidence (0.38)", "classifiers disagree (heuristic=['over_refusal'], llm=['none'])"], "labels": ["over_refusal"]}

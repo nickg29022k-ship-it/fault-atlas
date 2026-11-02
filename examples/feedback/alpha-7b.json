@@ -1,0 +1,197 @@
+{
+  "model": "alpha-7b",
+  "n_items": 30,
+  "failure_rate": 0.6,
+  "severity_weighted_score": 2.133,
+  "severity_counts": {
+    "low": 1,
+    "medium": 4,
+    "high": 9,
+    "critical": 7
+  },
+  "failures": [
+    {
+      "category": "hallucination",
+      "count": 7,
+      "rate": 0.2333,
+      "severity": "critical",
+      "fleet_rate": 0.0885,
+      "domain_hotspots": [
+        {
+          "domain": "coding",
+          "rate": 0.5,
+          "count": 3,
+          "n": 6
+        },
+        {
+          "domain": "general",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [
+        "r057",
+        "r042"
+      ],
+      "recommendation": "Penalise fabricated specifics in preference data; reward explicit uncertainty (\"I could not find a source for this\")."
+    },
+    {
+      "category": "reasoning_error",
+      "count": 4,
+      "rate": 0.1333,
+      "severity": "high",
+      "fleet_rate": 0.0659,
+      "domain_hotspots": [
+        {
+          "domain": "finance",
+          "rate": 0.6667,
+          "count": 2,
+          "n": 3
+        },
+        {
+          "domain": "science",
+          "rate": 0.5,
+          "count": 2,
+          "n": 4
+        }
+      ],
+      "example_ids": [
+        "r045",
+        "r059"
+      ],
+      "recommendation": "Add step-checked math and logic data; reward verified intermediate steps rather than final answers only."
+    },
+    {
+      "category": "unsupported_claim",
+      "count": 4,
+      "rate": 0.1333,
+      "severity": "high",
+      "fleet_rate": 0.0659,
+      "domain_hotspots": [
+        {
+          "domain": "finance",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        },
+        {
+          "domain": "legal",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        }
+      ],
+      "example_ids": [
+        "r027",
+        "r042"
+      ],
+      "recommendation": "Train on grounded QA with answer-attribution checks; reward \"the context does not say\" when information is missing."
+    },
+    {
+      "category": "omission",
+      "count": 2,
+      "rate": 0.0667,
+      "severity": "medium",
+      "fleet_rate": 0.0824,
+      "domain_hotspots": [
+        {
+          "domain": "science",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        },
+        {
+          "domain": "legal",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Include multi-part prompts with rubric-based rewards for coverage of every requested item."
+    },
+    {
+      "category": "factual_error",
+      "count": 1,
+      "rate": 0.0333,
+      "severity": "high",
+      "fleet_rate": 0.0927,
+      "domain_hotspots": [
+        {
+          "domain": "general",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Add targeted factual QA pairs for the affected domain and verify numeric facts against references during data collection."
+    },
+    {
+      "category": "formatting_failure",
+      "count": 1,
+      "rate": 0.0333,
+      "severity": "low",
+      "fleet_rate": 0.0836,
+      "domain_hotspots": [
+        {
+          "domain": "coding",
+          "rate": 0.1667,
+          "count": 1,
+          "n": 6
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Add structured-output examples with strict validators in the reward signal; consider constrained decoding for JSON endpoints."
+    },
+    {
+      "category": "over_refusal",
+      "count": 1,
+      "rate": 0.0333,
+      "severity": "medium",
+      "fleet_rate": 0.1095,
+      "domain_hotspots": [
+        {
+          "domain": "medical",
+          "rate": 0.1667,
+          "count": 1,
+          "n": 6
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Add benign-but-sensitive prompts (medical, legal, security education) with helpful reference answers to counter refusal over-generalisation."
+    },
+    {
+      "category": "instruction_violation",
+      "count": 1,
+      "rate": 0.0333,
+      "severity": "medium",
+      "fleet_rate": 0.1158,
+      "domain_hotspots": [
+        {
+          "domain": "writing",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Add constraint-following data with programmatic checks (word counts, banned terms, language ID) in the reward model."
+    }
+  ],
+  "priorities": [
+    "hallucination",
+    "reasoning_error",
+    "unsupported_claim"
+  ],
+  "insights": [
+    "alpha-7b hallucinates on 50% of coding prompts (3/6), while gamma-70b never does (0/4).",
+    "alpha-7b makes reasoning errors on 67% of finance prompts (2/3), while beta-13b never does (0/4).",
+    "alpha-7b makes reasoning errors on 50% of science prompts (2/4), while gamma-70b never does (0/4).",
+    "alpha-7b has the highest hallucination rate: 23% of its responses, 14.4x the other models' average.",
+    "alpha-7b has the highest reasoning_error rate: 13% of its responses, 4.1x the other models' average.",
+    "alpha-7b has the highest unsupported_claim rate: 13% of its responses, 4.1x the other models' average.",
+    "alpha-7b has the highest severity-weighted failure score (2.13 per item vs 1.37 for gamma-70b); 16 of its failures are high or critical severity."
+  ]
+}

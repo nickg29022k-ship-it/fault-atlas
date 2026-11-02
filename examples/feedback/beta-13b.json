@@ -1,0 +1,199 @@
+{
+  "model": "beta-13b",
+  "n_items": 31,
+  "failure_rate": 0.6774,
+  "severity_weighted_score": 1.677,
+  "severity_counts": {
+    "low": 1,
+    "medium": 13,
+    "high": 7,
+    "critical": 1
+  },
+  "failures": [
+    {
+      "category": "over_refusal",
+      "count": 8,
+      "rate": 0.2581,
+      "severity": "medium",
+      "fleet_rate": 0.1095,
+      "domain_hotspots": [
+        {
+          "domain": "medical",
+          "rate": 0.625,
+          "count": 5,
+          "n": 8
+        },
+        {
+          "domain": "writing",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [
+        "r004",
+        "r001"
+      ],
+      "recommendation": "Add benign-but-sensitive prompts (medical, legal, security education) with helpful reference answers to counter refusal over-generalisation."
+    },
+    {
+      "category": "instruction_violation",
+      "count": 4,
+      "rate": 0.129,
+      "severity": "medium",
+      "fleet_rate": 0.1158,
+      "domain_hotspots": [
+        {
+          "domain": "legal",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        },
+        {
+          "domain": "general",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        }
+      ],
+      "example_ids": [
+        "r015"
+      ],
+      "recommendation": "Add constraint-following data with programmatic checks (word counts, banned terms, language ID) in the reward model."
+    },
+    {
+      "category": "factual_error",
+      "count": 3,
+      "rate": 0.0968,
+      "severity": "high",
+      "fleet_rate": 0.0927,
+      "domain_hotspots": [
+        {
+          "domain": "general",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        },
+        {
+          "domain": "coding",
+          "rate": 0.2,
+          "count": 1,
+          "n": 5
+        }
+      ],
+      "example_ids": [
+        "r067",
+        "r015"
+      ],
+      "recommendation": "Add targeted factual QA pairs for the affected domain and verify numeric facts against references during data collection."
+    },
+    {
+      "category": "reasoning_error",
+      "count": 2,
+      "rate": 0.0645,
+      "severity": "high",
+      "fleet_rate": 0.0659,
+      "domain_hotspots": [
+        {
+          "domain": "science",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        },
+        {
+          "domain": "coding",
+          "rate": 0.2,
+          "count": 1,
+          "n": 5
+        }
+      ],
+      "example_ids": [
+        "r066"
+      ],
+      "recommendation": "Add step-checked math and logic data; reward verified intermediate steps rather than final answers only."
+    },
+    {
+      "category": "unsupported_claim",
+      "count": 2,
+      "rate": 0.0645,
+      "severity": "high",
+      "fleet_rate": 0.0659,
+      "domain_hotspots": [
+        {
+          "domain": "writing",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        },
+        {
+          "domain": "science",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Train on grounded QA with answer-attribution checks; reward \"the context does not say\" when information is missing."
+    },
+    {
+      "category": "hallucination",
+      "count": 1,
+      "rate": 0.0323,
+      "severity": "critical",
+      "fleet_rate": 0.0885,
+      "domain_hotspots": [
+        {
+          "domain": "coding",
+          "rate": 0.2,
+          "count": 1,
+          "n": 5
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Penalise fabricated specifics in preference data; reward explicit uncertainty (\"I could not find a source for this\")."
+    },
+    {
+      "category": "omission",
+      "count": 1,
+      "rate": 0.0323,
+      "severity": "medium",
+      "fleet_rate": 0.0824,
+      "domain_hotspots": [
+        {
+          "domain": "finance",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Include multi-part prompts with rubric-based rewards for coverage of every requested item."
+    },
+    {
+      "category": "formatting_failure",
+      "count": 1,
+      "rate": 0.0323,
+      "severity": "low",
+      "fleet_rate": 0.0836,
+      "domain_hotspots": [
+        {
+          "domain": "coding",
+          "rate": 0.2,
+          "count": 1,
+          "n": 5
+        }
+      ],
+      "example_ids": [],
+      "recommendation": "Add structured-output examples with strict validators in the reward signal; consider constrained decoding for JSON endpoints."
+    }
+  ],
+  "priorities": [
+    "over_refusal",
+    "factual_error",
+    "instruction_violation"
+  ],
+  "insights": [
+    "beta-13b over-refuses on medical prompts at 3.8x the rate of alpha-7b (62% of 8 vs 17% of 6).",
+    "beta-13b has the highest over_refusal rate: 26% of its responses, 7.3x the other models' average."
+  ]
+}

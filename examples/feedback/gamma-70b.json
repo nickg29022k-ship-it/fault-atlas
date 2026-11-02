@@ -1,0 +1,148 @@
+{
+  "model": "gamma-70b",
+  "n_items": 27,
+  "failure_rate": 0.6667,
+  "severity_weighted_score": 1.37,
+  "severity_counts": {
+    "low": 5,
+    "medium": 10,
+    "high": 4,
+    "critical": 0
+  },
+  "failures": [
+    {
+      "category": "formatting_failure",
+      "count": 5,
+      "rate": 0.1852,
+      "severity": "low",
+      "fleet_rate": 0.0836,
+      "domain_hotspots": [
+        {
+          "domain": "legal",
+          "rate": 0.5,
+          "count": 1,
+          "n": 2
+        },
+        {
+          "domain": "finance",
+          "rate": 0.5,
+          "count": 2,
+          "n": 4
+        }
+      ],
+      "example_ids": [
+        "r010",
+        "r054"
+      ],
+      "recommendation": "Add structured-output examples with strict validators in the reward signal; consider constrained decoding for JSON endpoints."
+    },
+    {
+      "category": "instruction_violation",
+      "count": 5,
+      "rate": 0.1852,
+      "severity": "medium",
+      "fleet_rate": 0.1158,
+      "domain_hotspots": [
+        {
+          "domain": "writing",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        },
+        {
+          "domain": "general",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [
+        "r060",
+        "r038"
+      ],
+      "recommendation": "Add constraint-following data with programmatic checks (word counts, banned terms, language ID) in the reward model."
+    },
+    {
+      "category": "factual_error",
+      "count": 4,
+      "rate": 0.1481,
+      "severity": "high",
+      "fleet_rate": 0.0927,
+      "domain_hotspots": [
+        {
+          "domain": "general",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        },
+        {
+          "domain": "science",
+          "rate": 0.25,
+          "count": 1,
+          "n": 4
+        }
+      ],
+      "example_ids": [
+        "r013"
+      ],
+      "recommendation": "Add targeted factual QA pairs for the affected domain and verify numeric facts against references during data collection."
+    },
+    {
+      "category": "omission",
+      "count": 4,
+      "rate": 0.1481,
+      "severity": "medium",
+      "fleet_rate": 0.0824,
+      "domain_hotspots": [
+        {
+          "domain": "legal",
+          "rate": 0.5,
+          "count": 1,
+          "n": 2
+        },
+        {
+          "domain": "writing",
+          "rate": 0.3333,
+          "count": 1,
+          "n": 3
+        }
+      ],
+      "example_ids": [
+        "r006",
+        "r051"
+      ],
+      "recommendation": "Include multi-part prompts with rubric-based rewards for coverage of every requested item."
+    },
+    {
+      "category": "over_refusal",
+      "count": 1,
+      "rate": 0.037,
+      "severity": "medium",
+      "fleet_rate": 0.1095,
+      "domain_hotspots": [
+        {
+          "domain": "medical",
+          "rate": 0.1667,
+          "count": 1,
+          "n": 6
+        }
+      ],
+      "example_ids": [
+        "r016"
+      ],
+      "recommendation": "Add benign-but-sensitive prompts (medical, legal, security education) with helpful reference answers to counter refusal over-generalisation."
+    }
+  ],
+  "priorities": [
+    "factual_error",
+    "instruction_violation",
+    "omission"
+  ],
+  "insights": [
+    "gamma-70b breaks requested formats on 50% of finance prompts (2/4), while alpha-7b never does (0/3).",
+    "gamma-70b has the highest factual_error rate: 15% of its responses, 2.3x the other models' average.",
+    "gamma-70b has the highest omission rate: 15% of its responses, 3.0x the other models' average.",
+    "gamma-70b has the highest formatting_failure rate: 19% of its responses, 5.6x the other models' average.",
+    "gamma-70b has the highest instruction_violation rate: 19% of its responses, 2.3x the other models' average."
+  ]
+}

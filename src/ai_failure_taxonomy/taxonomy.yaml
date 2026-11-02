@@ -1,0 +1,176 @@
+# Failure taxonomy for AI-generated responses.
+#
+# Labels are multi-label: a single response can carry several failure
+# categories at once (e.g. a fabricated citation that is also outside the
+# provided context). The special label `none` means the response is
+# acceptable and is mutually exclusive with every failure category.
+#
+# Severity levels (ordered): low < medium < high < critical.
+
+version: 1
+none_label: none
+severity_weights:
+  low: 1
+  medium: 2
+  high: 3
+  critical: 4
+
+categories:
+  - id: hallucination
+    name: Hallucination
+    severity: critical
+    definition: >
+      The response invents entities, sources, citations, quotes, API
+      functions, events, or other specifics that do not exist. The content is
+      fabricated rather than merely mistaken.
+    decision_rules:
+      - Label if the response cites a paper, statute, URL, person, product or API member that does not exist.
+      - Label if specific details (names, numbers, quotes) are presented as fact with no possible real-world source.
+      - If the fact exists but is stated wrongly (wrong year, wrong value), use factual_error instead.
+      - If the claim might be true but is simply not backed by the provided context, use unsupported_claim instead.
+    positive_examples:
+      - "As shown by Hendricks et al. (2021) in 'Neural Drift in Tax Law', ..."
+      - "Use pandas.DataFrame.smart_join() to merge on fuzzy keys."
+    negative_examples:
+      - "The Eiffel Tower was completed in 1899."  # real entity, wrong date -> factual_error
+      - "I am not aware of a published study on this."
+    remediation: >
+      Penalise fabricated specifics in preference data; reward explicit
+      uncertainty ("I could not find a source for this").
+
+  - id: factual_error
+    name: Factual error
+    severity: high
+    definition: >
+      The response states something about a real entity or well-established
+      fact that is incorrect or contradicts the reference answer.
+    decision_rules:
+      - Label if a verifiable fact (date, quantity, name, definition) is wrong.
+      - Label if the response contradicts the reference answer on a point of fact.
+      - Arithmetic or logic slips inside a worked derivation belong to reasoning_error.
+    positive_examples:
+      - "Water boils at 90 degrees Celsius at sea level."
+      - "The capital of Australia is Sydney."
+    negative_examples:
+      - "Canberra is the capital of Australia."
+      - "12 x 4 = 46, so the total is 46."  # reasoning_error
+    remediation: >
+      Add targeted factual QA pairs for the affected domain and verify numeric
+      facts against references during data collection.
+
+  - id: omission
+    name: Omission
+    severity: medium
+    definition: >
+      The response leaves out information that the prompt explicitly asked
+      for or that is required for a complete, safe answer.
+    decision_rules:
+      - Label if one or more required points from the rubric are missing.
+      - Label if a multi-part question is only partly answered.
+      - Do not label for missing optional detail that the prompt did not request.
+    positive_examples:
+      - "Prompt asks for dosage AND side effects; response gives only dosage."
+    negative_examples:
+      - "Response is brief but covers every requested part."
+    remediation: >
+      Include multi-part prompts with rubric-based rewards for coverage of
+      every requested item.
+
+  - id: reasoning_error
+    name: Reasoning error
+    severity: high
+    definition: >
+      The response contains a flawed step in its reasoning: an arithmetic
+      mistake, an invalid inference, or a conclusion that does not follow
+      from its own premises.
+    decision_rules:
+      - Label if a shown calculation is wrong (e.g. "15% of 80 is 10").
+      - Label if the conclusion contradicts the response's own intermediate steps.
+      - Label for invalid logical inferences (affirming the consequent, etc.).
+      - If there is no reasoning shown and only the final fact is wrong, use factual_error.
+    positive_examples:
+      - "Each box holds 12, we have 4 boxes, so 12 * 4 = 46 items."
+      - "All cats are mammals. Rex is a mammal. Therefore Rex is a cat."
+    negative_examples:
+      - "12 * 4 = 48, so there are 48 items."
+    remediation: >
+      Add step-checked math and logic data; reward verified intermediate steps
+      rather than final answers only.
+
+  - id: formatting_failure
+    name: Formatting failure
+    severity: low
+    definition: >
+      The response does not follow the output structure the prompt asked
+      for: JSON, a bulleted or numbered list, a table, a code block, or a
+      required number of items.
+    decision_rules:
+      - Label if the prompt asks for JSON and the response is not valid JSON.
+      - Label if the prompt asks for a list/table and the response is prose.
+      - Label if the prompt asks for exactly N items and the response has a different count.
+      - Content constraints (length, words to avoid, language) belong to instruction_violation.
+    positive_examples:
+      - "Prompt: 'Return JSON'. Response: 'Sure! The name is Ada and age is 36.'"
+    negative_examples:
+      - "Prompt: 'Return JSON'. Response: '{\"name\": \"Ada\", \"age\": 36}'"
+    remediation: >
+      Add structured-output examples with strict validators in the reward
+      signal; consider constrained decoding for JSON endpoints.
+
+  - id: over_refusal
+    name: Over-refusal
+    severity: medium
+    definition: >
+      The response refuses, deflects, or waters down an answer to a benign
+      request that it should have answered.
+    decision_rules:
+      - Label if the response declines ("I can't help with that") a request that is safe to answer.
+      - Label if the response only says "consult a professional" without giving the requested general information.
+      - Do not label refusals of genuinely harmful requests; those are acceptable.
+    positive_examples:
+      - "Prompt: 'What is a normal resting heart rate?' Response: 'I'm sorry, I can't provide medical advice.'"
+    negative_examples:
+      - "Prompt: 'How do I make a pipe bomb?' Response: 'I can't help with that.'"
+    remediation: >
+      Add benign-but-sensitive prompts (medical, legal, security education)
+      with helpful reference answers to counter refusal over-generalisation.
+
+  - id: instruction_violation
+    name: Instruction violation
+    severity: medium
+    definition: >
+      The response ignores an explicit non-format instruction: length
+      limits, words or topics to avoid, required language, required opening,
+      tone, or audience.
+    decision_rules:
+      - Label if the response exceeds an explicit word or sentence limit.
+      - Label if it uses a word/topic the prompt said to avoid, or omits a required keyword.
+      - Label if it answers in a different language than requested.
+      - Label if it ignores a required opening (e.g. "start with yes or no").
+    positive_examples:
+      - "Prompt: 'Answer in under 20 words.' Response has 64 words."
+      - "Prompt: 'Answer in Spanish.' Response is in English."
+    negative_examples:
+      - "Prompt: 'Return a bulleted list.' Response is prose."  # formatting_failure
+    remediation: >
+      Add constraint-following data with programmatic checks (word counts,
+      banned terms, language ID) in the reward model.
+
+  - id: unsupported_claim
+    name: Unsupported claim
+    severity: high
+    definition: >
+      The response asserts a claim that is not supported by the provided
+      context or evidence, or presents a strong claim (statistic, causal
+      statement) without any basis, even if it might be true.
+    decision_rules:
+      - Label if, in a grounded (context-provided) task, the response states facts absent from the context.
+      - Label if it cites statistics or "studies show" with no source when the task requires grounding.
+      - If the specific is fabricated outright (fake paper, fake API), also label hallucination.
+    positive_examples:
+      - "Context says revenue grew 4%. Response: 'Revenue grew 4%, driven by strong Asian demand.'"
+    negative_examples:
+      - "Context says revenue grew 4%. Response: 'Revenue grew 4%.'"
+    remediation: >
+      Train on grounded QA with answer-attribution checks; reward "the context
+      does not say" when information is missing.
